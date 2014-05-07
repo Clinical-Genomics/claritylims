@@ -83,7 +83,7 @@ def main(lims,args,epp_logger):
         artifacts = p.all_inputs(unique=True)
     else:
         all_artifacts = p.all_outputs(unique=True)
-        artifacts = filter(lambda a: a.output_type == "ResultFile" ,all_artifacts)
+        artifacts = filter(lambda a: a.output_type == "Analyte" ,all_artifacts)
 
     correct_artifacts, wrong_factor1 = check_udf_is_defined(artifacts, udf_factor1)
     correct_artifacts, wrong_factor2 = check_udf_is_defined(correct_artifacts, udf_factor2)
