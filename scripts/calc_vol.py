@@ -85,7 +85,7 @@ def check_udf_has_value(artifacts, udf, value):
 def main(lims,args,epp_logger):
     p = Process(lims,id = args.pid)
     udf_factor2 = 'Concentration (ng/ul)'
-    result_udf = 'Pooling volume (ul)'
+    result_udf = 'Required volume (ul)'
     udf_factor1 = 'Amount needed (ng)'
 
     if args.aggregate:
