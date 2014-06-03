@@ -100,7 +100,7 @@ def main(lims,args,epp_logger):
     f = open(args.res, "a")
 
     if correct_artifacts:
-        apply_calculations(lims, correct_artifacts, udf_factor1, '/',
+        apply_calculations(lims, correct_artifacts, udf_factor1,
                            udf_factor2, result_udf, epp_logger, f)
     
     f.close()
