@@ -84,7 +84,7 @@ def check_udf_has_value(artifacts, udf, value):
 def main(lims,args,epp_logger):
     p = Process(lims,id = args.pid)
     udf_factor1 = 'Concentration (ng/ul)'
-    result_udf = 'Concentration (nM)'
+    result_udf = 'Concentration nM'
     udf_factor2 = 'Size (bp)'
 
     if args.aggregate:
