@@ -18,9 +18,9 @@ import logging
 import sys
 
 def apply_calculations(lims,artifacts,udf1,udf2,result_udf,epp_logger, f):
+    logging.info(("result_udf: {0}, udf_conc: {1}, "
+                  "udf_size: {2}").format(result_udf,udf1,udf2))
 
-    logging.info(("result_udf: {0}, udf1: {1}, "
-                  "operator: {2}, udf2: {3}").format(result_udf,udf1,op,udf2))
     for artifact in artifacts:
         try:
             artifact.udf[result_udf]
@@ -83,9 +83,9 @@ def check_udf_has_value(artifacts, udf, value):
 
 def main(lims,args,epp_logger):
     p = Process(lims,id = args.pid)
-    udf_factor2 = 'Concentration (ng/ul)'
-    result_udf = 'Required volume (ul)'
-    udf_factor1 = 'Amount needed (ng)'
+    udf_factor1 = 'Concentration (ng/ul)'
+    result_udf = 'Concentration (nM)'
+    udf_factor2 = 'Size (bp)'
 
     if args.aggregate:
         artifacts = p.all_inputs(unique=True)
