@@ -36,9 +36,12 @@ def apply_calculations(lims,artifacts,udf1,op,udf2,result_udf,epp_logger, f):
                                                         artifact.udf[udf2]))
         artifact.udf[result_udf] = eval(
             '{0}{1}{2}'.format(artifact.udf[udf1],op,artifact.udf[udf2]))
+        ebvolume = 'EB Volume'
+        artifact.udf[ebvolume] = 130 - artifact.udf[result_udf]
+
         artifact.put()
-        logging.info('Updated {0} to {1}.'.format(result_udf,
-                                                 artifact.udf[result_udf]))
+        logging.info('Updated {0} to {1} and {2} to {3}.'.format(result_udf,
+                                                 artifact.udf[result_udf], ebvolume, artifact.udf[ebvolume]))
 
         f.write(("Calculating: Artifact[{6}] id:{0}, "
                      "  {3} (ng/ul) {4} {5} (ng) "
