@@ -9,11 +9,23 @@ import os
 import requests
 import elementtree.ElementTree as ET
 
-print 'hello'
+configfile = "/home/hiseq.clinical/.scilifelabrc"
+if (len(sys.argv)>1):
+  if os.path.isfile(sys.argv[1]):
+    configfile = sys.argv[1]
+    
+params = {}
+with open(configfile, "r") as confs:
+  for line in confs:
+    if len(line) > 5 and not line[0] == "#":
+      line = line.rstrip()
+      pv = line.split(" ")
+      params[pv[0]] = pv[1]
+
 
 baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/'
-user1 = "apiuser"
-pass1 = "rushverbpureking"
+user1 = params['apiuser']
+pass1 = params['apipass']
 
 r = requests.get(baseurl, auth=(user1, pass1))
 #print r.status_code
