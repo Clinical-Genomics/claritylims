@@ -7,7 +7,7 @@ import glob
 import re
 import os
 import requests
-
+import elementtree.ElementTree as ET
 
 print 'hello'
 
@@ -20,5 +20,8 @@ print r.status_code
 print r.headers['content-type']
 print r.encoding
 print r.text
+
+doc = ET.ElementTree(r.text)
+print doc.root
 
 exit
