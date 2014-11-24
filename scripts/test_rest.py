@@ -21,7 +21,7 @@ print r.headers['content-type']
 print r.encoding
 print r.text
 
-doc = ET.ElementTree(ET.fromstring(r.text))
-print doc.root
+tree = ET.ElementTree(ET.fromstring(r.text))
+print tree.getroot()
 
 exit
