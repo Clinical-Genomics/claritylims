@@ -11,9 +11,9 @@ import requests
 
 print 'hello'
 
-baseurl  = "https://clinical-lims-stage.scilifelab.se:8443/api/v2/"
-user = "apiuser"
-pass = "rushverbpureking"
+baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/'
+user1 = "apiuser"
+pass1 = "rushverbpureking"
 
 r = requests.get(baseurl, auth=(user, pass))
 r.status_code
