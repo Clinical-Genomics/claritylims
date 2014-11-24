@@ -9,4 +9,16 @@ import os
 import requests
 
 
-print hello
+print 'hello'
+
+baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/'
+user = 'apiuser'
+pass = 'rushverbpureking'
+
+r = requests.get(baseurl, auth=(user, pass))
+r.status_code
+r.headers['content-type']
+r.encoding
+r.text
+
+exit
