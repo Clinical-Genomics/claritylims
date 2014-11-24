@@ -25,7 +25,7 @@ tree = ET.ElementTree(ET.fromstring(r.text))
 root = tree.getroot()
 
 for child in root:
-  print child.tag, child.attribute
+  print child.tag, child.attrib
   
 
 exit
