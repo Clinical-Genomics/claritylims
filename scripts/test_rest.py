@@ -45,6 +45,6 @@ stree = ET.ElementTree(ET.fromstring(smpls.text))
 rsmpl = stree.getroot()
 
 for sample in rsmpl:
-  print sample.tag, sample.atrib
+  print sample.tag, sample.attrib
 
 exit
