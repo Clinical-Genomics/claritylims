@@ -16,9 +16,9 @@ user1 = "apiuser"
 pass1 = "rushverbpureking"
 
 r = requests.get(baseurl, auth=(user1, pass1))
-r.status_code
-r.headers['content-type']
-r.encoding
-r.text
+print r.status_code
+print r.headers['content-type']
+print r.encoding
+print r.text
 
 exit
