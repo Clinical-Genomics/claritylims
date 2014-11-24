@@ -42,7 +42,7 @@ for child in root:
 # get samples
 smpls = requests.get(baseurl+'samples/', auth=(user1, pass1))
 stree = ET.ElementTree(ET.fromstring(smpls.text))
-rsmpl = stree.getroor()
+rsmpl = stree.getroot()
 
 for sample in rsmpl:
   print sample.tag, sample.atrib
