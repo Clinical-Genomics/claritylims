@@ -21,7 +21,7 @@ print r.headers['content-type']
 print r.encoding
 print r.text
 
-doc = ET.ElementTree(r.text)
+doc = ET.ElementTree(requests.get(baseurl, auth=(user1, pass1)))
 print doc.root
 
 exit
