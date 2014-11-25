@@ -56,8 +56,10 @@ for sample in rsmpl:
 #  print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
   elem = svt.getroot()
-  for element in elem.iter("name"):
-    print element.tag, element.text
+  print elem.get("name")
+
+#  for element in elem:
+#    print element.tag, element.text
 #  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
 #  name = ET.SubElement(elem, "name")
 #  print name.text
