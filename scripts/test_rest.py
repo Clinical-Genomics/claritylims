@@ -53,6 +53,6 @@ for sample in rsmpl:
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
   print singlev.text
   svt = ET.fromstring(singlev.text.encode('utf-8'))
-  print svt.keys() #svt.attrib['name']
+  print svt.attrib['name']
   
 exit
