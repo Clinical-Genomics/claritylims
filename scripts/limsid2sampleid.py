@@ -16,7 +16,8 @@ if (len(sys.argv)>2):
     configfile = sys.argv[2]
 
 if (len(sys.argv)<2):
-    print "usage: $0 <LIMSID> <config-file:optional>"
+  print "usage: $0 <LIMSID> <config-file:optional>"
+  exit
     
 params = {}
 with open(configfile, "r") as confs:
