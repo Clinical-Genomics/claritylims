@@ -75,8 +75,9 @@ while True:
         if sample.tag == "previous-page":
           smpls = ""
           stree = ""
-          rsmpl = ""
+          rsmpl = []
           break
+          exit
         print URL
         print sample.tag
 
