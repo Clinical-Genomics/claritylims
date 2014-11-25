@@ -68,15 +68,17 @@ while True:
       else:
         if sample.tag == "next-page":
           URL = sample.attrib['uri']
+          previous = URL
+          smpls = requests.get(URL, auth=(user1, pass1))
+          stree = ET.ElementTree(ET.fromstring(smpls.text))
+          rsmpl = stree.getroot()
         if sample.tag == "previous-page":
+          smpls = null
+          stree = null
+          rsmpl = null
           break
         print URL
         print sample.tag
-  else: 
-    previous = URL
-    smpls = requests.get(URL, auth=(user1, pass1))
-    stree = ET.ElementTree(ET.fromstring(smpls.text))
-    rsmpl = stree.getroot()
 
 
 #for sample in rsmpl:
