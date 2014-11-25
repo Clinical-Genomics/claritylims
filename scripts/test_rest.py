@@ -68,9 +68,10 @@ while True:
       else:
         if sample.tag == "next-page":
           URL = sample.attrib['uri']
-          print URL
-        else:
+        if  == "previous-page":
           break
+        print URL
+        print sample.tag
   else: 
     previous = URL
     smpls = requests.get(URL, auth=(user1, pass1))
