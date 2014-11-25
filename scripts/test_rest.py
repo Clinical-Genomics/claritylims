@@ -78,8 +78,6 @@ while mybrain == 'empty':
           stree = ""
           rsmpl = []
           mybrain = 'delirious'
-          break
-          exit
         print URL
         print sample.tag
 
