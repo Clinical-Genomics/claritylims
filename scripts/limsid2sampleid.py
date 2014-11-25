@@ -63,7 +63,7 @@ while mybrain == 'empty':
   if previous == URL:
     for sample in rsmpl:
       if sample.tag == "sample":
-        if sample.attrib['limsid'] = search:
+        if sample.attrib['limsid'] == search:
           LIMSID = sample.attrib['limsid']
           singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
               headers={'content-type': 'application/xml', 'accept': 'application/xml'})
