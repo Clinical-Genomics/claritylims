@@ -11,9 +11,12 @@ import elementtree.ElementTree as ET
 import cElementTree as ET
 
 configfile = "/home/hiseq.clinical/.scilifelabrc"
-if (len(sys.argv)>1):
-  if os.path.isfile(sys.argv[1]):
-    configfile = sys.argv[1]
+if (len(sys.argv)>2):
+  if os.path.isfile(sys.argv[2]):
+    configfile = sys.argv[2]
+
+if (len(sys.argv)<2):
+    print "usage: $0 <LIMSID> <config-file:optional>
     
 params = {}
 with open(configfile, "r") as confs:
