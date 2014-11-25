@@ -58,10 +58,11 @@ for sample in rsmpl:
   elem = svt.getroot()
 #  print elem.attrib.get("name")
 
-#  for element in elem:
-#    print element.tag, element.text
+  for element in elem:
+      if element.tag == 'name':
+        print element.tag, element.text
 #  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
-  name = ET.SubElement(elem, "name")
-  print name.text
+#  name = ET.SubElement(elem, "name")
+#  print name.text
   
 exit
