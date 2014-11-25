@@ -53,13 +53,13 @@ for sample in rsmpl:
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
             headers={'content-type': 'application/xml', 'accept': 'application/xml'})
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
-  print singlev.text
+#  print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
   elem = svt.getroot()
-  for element in elem:
+  for element in elem.iter("name"):
     print element.tag, element.text
-  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
-  name = ET.SubElement(elem, "name")
-  print name.text
+#  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
+#  name = ET.SubElement(elem, "name")
+#  print name.text
   
 exit
