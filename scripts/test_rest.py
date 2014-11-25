@@ -52,6 +52,6 @@ for sample in rsmpl:
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1))
   svtree = ET.ElementTree(ET.fromstring(singlev.text))
   for svt in svtree:
-    print svt.keys()
+    print svt.attrib['name']
   
 exit
