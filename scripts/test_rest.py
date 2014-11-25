@@ -54,7 +54,7 @@ for sample in rsmpl:
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
   print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-  rt = svt.getroot
+  rt = svt.getroot()
   print rt.keys()
   
 exit
