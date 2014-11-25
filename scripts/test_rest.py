@@ -45,11 +45,15 @@ smpls = requests.get(baseurl+'samples/', auth=(user1, pass1))
 stree = ET.ElementTree(ET.fromstring(smpls.text))
 rsmpl = stree.getroot()
 
+LIMSID = ''
+SAMPLEID = ''
+
 for sample in rsmpl:
-  print sample.tag, sample.attrib, sample.keys()
-  print sample.tag
-  print '  in limsid:', sample.attrib['limsid']
-  print '  in uri   :', sample.attrib['uri']
+#  print sample.tag, sample.attrib, sample.keys()
+#  print sample.tag
+#  print '  in limsid:', sample.attrib['limsid']
+  LIMSID = sample.attrib['limsid']
+#  print '  in uri   :', sample.attrib['uri']
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
             headers={'content-type': 'application/xml', 'accept': 'application/xml'})
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
@@ -60,9 +64,12 @@ for sample in rsmpl:
 
   for element in elem:
       if element.tag == 'name':
-        print element.tag, element.text
+        SAMPLEID = element.text
+
+#        print element.tag, element.text
 #  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
 #  name = ET.SubElement(elem, "name")
 #  print name.text
+  print "LIMSID " + LIMSID + "     SAMPLEID " SAMPLEID
   
 exit
