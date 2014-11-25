@@ -70,6 +70,6 @@ for sample in rsmpl:
 #  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
 #  name = ET.SubElement(elem, "name")
 #  print name.text
-  print "LIMSID " + LIMSID + "     SAMPLEID " SAMPLEID
+  print "LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID
   
 exit
