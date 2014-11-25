@@ -48,7 +48,9 @@ rsmpl = stree.getroot()
 for sample in rsmpl:
   print sample.tag, sample.attrib, sample.keys()
   print sample.tag
-  print '  in attribute:', sample.attrib['limsid']
-  print '  in text     :', sample.text
-
+  print '  in limsid:', sample.attrib['limsid']
+  singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1))
+  svtree = ET.ElementTree(ET.fromstring(singlev.text))
+  print svtree[0].keys()
+  
 exit
