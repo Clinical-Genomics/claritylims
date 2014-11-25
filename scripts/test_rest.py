@@ -58,6 +58,6 @@ for sample in rsmpl:
   elem = ET.Element("smp:sample")
   print ET.iselement(elem), ET.iselement(sample), ET.iselement(rsmpl)
   name = ET.SubElement(elem, "name")
-  print name
+  print name.text
   
 exit
