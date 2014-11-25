@@ -51,7 +51,8 @@ previous = URL
 smpls = requests.get(URL, auth=(user1, pass1))
 stree = ET.ElementTree(ET.fromstring(smpls.text))
 rsmpl = stree.getroot()
-while True:
+mybrain = 'empty'
+while mybrain == 'empty':
   if previous == URL:
     for sample in rsmpl:
       if sample.tag == "sample":
@@ -76,6 +77,7 @@ while True:
           smpls = ""
           stree = ""
           rsmpl = []
+          mybrain = 'delirious'
           break
           exit
         print URL
