@@ -60,7 +60,7 @@ for sample in rsmpl:
       if element.tag == 'name':
         SAMPLEID = element.text
         COUNTER += 1
-    print COUNTER + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
+    print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
   else:
     print sample.tag
 
