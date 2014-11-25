@@ -15,7 +15,8 @@ if (len(sys.argv)>2):
   if os.path.isfile(sys.argv[2]):
     configfile = sys.argv[2]
 print len(sys.argv)
-if (len(sys.argv)>1):
+
+if (len(sys.argv) == 1):
   print "usage: $0 <LIMSID> <config-file:optional>"
   exit
     
