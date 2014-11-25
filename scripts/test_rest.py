@@ -53,7 +53,7 @@ for sample in rsmpl:
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1))
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
   print singlev.text
-  svt = ET.fromstring(singlev.text.encode('utf-8'))
+  svt = ET.Element(ET.fromstring(singlev.text.encode('utf-8')))
   print svt.attrib['name']
   
 exit
