@@ -73,9 +73,9 @@ while True:
           stree = ET.ElementTree(ET.fromstring(smpls.text))
           rsmpl = stree.getroot()
         if sample.tag == "previous-page":
-          smpls = null
-          stree = null
-          rsmpl = null
+          smpls = ""
+          stree = ""
+          rsmpl = ""
           break
         print URL
         print sample.tag
