@@ -68,6 +68,7 @@ while True:
       else:
         if sample.tag == "next-page":
           URL = sample.attrib['uri']
+          print URL
         else:
           break
   else: 
