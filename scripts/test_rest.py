@@ -66,8 +66,10 @@ while True:
             COUNTER += 1
         print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
       else:
-        print sample.tag 
-        URL = sample.attrib['uri']
+        if sample.tag == "next-page":
+          URL = sample.attrib['uri']
+        else:
+          break
   else: 
     previous = URL
     smpls = requests.get(URL, auth=(user1, pass1))
