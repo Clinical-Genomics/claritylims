@@ -8,6 +8,7 @@ import re
 import os
 import requests
 import elementtree.ElementTree as ET
+import cElementTree as ET
 
 configfile = "/home/hiseq.clinical/.scilifelabrc"
 if (len(sys.argv)>1):
