@@ -56,7 +56,7 @@ for sample in rsmpl:
   print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
   elem = ET.element("smp:sample")
-  print elem.
+  print elem.text
   
   
   
