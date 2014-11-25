@@ -51,6 +51,7 @@ for sample in rsmpl:
   print '  in limsid:', sample.attrib['limsid']
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1))
   svtree = ET.ElementTree(ET.fromstring(singlev.text))
-  print svtree[0].keys()
+  for svt in svtree:
+    print svt.keys()
   
 exit
