@@ -56,7 +56,7 @@ for sample in rsmpl:
   print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
   elem = ET.Element("smp:sample")
-  print elem.text
+  print ET.iselement(elem), ET.iselement(sample), ET.iselement(rsmpl)
   
   
   
