@@ -51,7 +51,7 @@ for sample in rsmpl:
   print '  in limsid:', sample.attrib['limsid']
   print '  in uri   :', sample.attrib['uri']
   singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
-            headers={'content-type': 'application/xml', 'accept': 'application/xml'}))
+            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
 #  svt = ET.ElementTree(ET.fromstring(singlev.text))
   print singlev.text
   svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
