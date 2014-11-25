@@ -47,6 +47,8 @@ rsmpl = stree.getroot()
 
 for sample in rsmpl:
   print sample.tag, sample.attrib, sample.keys()
-
+  print sample.tag
+  print '  in attribute:', sample.attrib['attribute']
+  print '  in text     :', sample.text
 
 exit
