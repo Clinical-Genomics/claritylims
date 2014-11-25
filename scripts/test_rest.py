@@ -37,32 +37,43 @@ r = requests.get(baseurl, auth=(user1, pass1))
 tree = ET.ElementTree(ET.fromstring(r.text))
 root = tree.getroot()
 
-for child in root:
-  print child.tag, child.attrib
+#for child in root:
+#  print child.tag, child.attrib
   
 # get samples
-smpls = requests.get(baseurl+'samples/', auth=(user1, pass1))
-stree = ET.ElementTree(ET.fromstring(smpls.text))
-rsmpl = stree.getroot()
 
 LIMSID = ''
 SAMPLEID = ''
 COUNTER = 0
 
-for sample in rsmpl:
-  if sample.tag == "sample":
-    LIMSID = sample.attrib['limsid']
-    singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
+URL = baseurl+'samples/'
+previous = URL
+smpls = requests.get(URL, auth=(user1, pass1))
+stree = ET.ElementTree(ET.fromstring(smpls.text))
+rsmpl = stree.getroot()
+while True:
+  if previous == URL:
+    for sample in rsmpl:
+      if sample.tag == "sample":
+        LIMSID = sample.attrib['limsid']
+        singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
             headers={'content-type': 'application/xml', 'accept': 'application/xml'})
-    svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-    elem = svt.getroot()
-    for element in elem:
-      if element.tag == 'name':
-        SAMPLEID = element.text
-        COUNTER += 1
-    print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
-  else:
-    print sample.tag
+        svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
+        elem = svt.getroot()
+        for element in elem:
+          if element.tag == 'name':
+            SAMPLEID = element.text
+            COUNTER += 1
+        print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
+      else:
+        print sample.tag 
+        URL = sample.attrib['uri']
+  else: 
+    previous = URL
+    smpls = requests.get(URL, auth=(user1, pass1))
+    stree = ET.ElementTree(ET.fromstring(smpls.text))
+    rsmpl = stree.getroot()
+
 
 #for sample in rsmpl:
 #  print sample.tag, sample.attrib, sample.keys()
