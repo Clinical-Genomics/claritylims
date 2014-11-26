@@ -15,7 +15,6 @@ if (len(sys.argv)>2):
   if os.path.isfile(sys.argv[2]):
     configfile = sys.argv[2]
 
-
 if (len(sys.argv) == 1):
   print "\n\tusage: $0 <LIMSID> <config-file:optional>\n"
   exit(0)
@@ -30,24 +29,9 @@ with open(configfile, "r") as confs:
       pv = line.split(" ")
       params[pv[0]] = pv[1]
 
-
 baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/'
 user1 = params['apiuser']
 pass1 = params['apipass']
-
-r = requests.get(baseurl, auth=(user1, pass1))
-#print r.status_code
-#print r.headers['content-type']
-#print r.encoding
-#print r.text
-
-tree = ET.ElementTree(ET.fromstring(r.text))
-root = tree.getroot()
-
-#for child in root:
-#  print child.tag, child.attrib
-  
-# get samples
 
 LIMSID = ''
 SAMPLEID = ''
@@ -87,32 +71,5 @@ while mybrain == 'empty':
           stree = ""
           rsmpl = []
           mybrain = 'delirious'
-#        print URL
-#        print sample.tag
 
-
-#for sample in rsmpl:
-#  print sample.tag, sample.attrib, sample.keys()
-#  print sample.tag
-#  print '  in limsid:', sample.attrib['limsid']
-#  LIMSID = sample.attrib['limsid']
-#  print '  in uri   :', sample.attrib['uri']
-#  singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
-#            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
-#  svt = ET.ElementTree(ET.fromstring(singlev.text))
-#  print singlev.text
-#  svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-#  elem = svt.getroot()
-#  print elem.attrib.get("name")
-
-#  for element in elem:
-#      if element.tag == 'name':
-#        SAMPLEID = element.text
-
-#        print element.tag, element.text
-#  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
-#  name = ET.SubElement(elem, "name")
-#  print name.text
-#  print "LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID
-  
 exit
