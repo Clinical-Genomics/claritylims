@@ -39,10 +39,10 @@ root = tree.getroot()
 for node in tree.iter('sample'):
   name = node.attrib.get('uri')
   url = node.attrib.get('limsid')
-    if name and url:
-        print '  %s :: %s' % (limsid, uri)
-    else:
-        print 'None'
+  if name and url:
+    print '  %s :: %s' % (limsid, uri)
+  else:
+    print 'None'
 
 #URL = baseurl+'samples/'
 #previous = URL
