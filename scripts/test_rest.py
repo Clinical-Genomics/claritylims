@@ -40,6 +40,6 @@ for node in tree.iter():
     rr = requests.get(suburi, auth=(user1, pass1))
     subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
     name = subtree.find('name')
-    print counter, internal_id, name.text
+    print counter, internal_id, name.text.encode('utf-8')
 
 exit
