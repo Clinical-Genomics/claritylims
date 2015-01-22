@@ -27,11 +27,6 @@ user1 = params['apiuser']
 pass1 = params['apipass']
 
 r = requests.get(baseurl, auth=(user1, pass1))
-#print r.status_code
-#print r.headers['content-type']
-#print r.encoding
-#print r.text
-
 tree = ElementTree.fromstring(r.text)
 
 for node in tree.findall('sample'):
@@ -39,73 +34,10 @@ for node in tree.findall('sample'):
   limsid = node.attrib.get('limsid')
   if node.tag == 'sample':
     internal_id = node.attrib['limsid']
-    print internal_id
     suburi = node.attrib['uri']
-    print suburi
     rr = requests.get(suburi, auth=(user1, pass1))
     subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
     name = subtree.find('name')
-    print name.text
+    print internal_id, name.text
 
-#for elem in tree:
-#  print elem.text
-#URL = baseurl+'samples/'
-#previous = URL
-#smpls = requests.get(URL, auth=(user1, pass1))
-#stree = ET.ElementTree(ET.fromstring(smpls.text))
-#rsmpl = stree.getroot()
-#mybrain = 'empty'
-#while mybrain == 'empty':
-#  if previous == URL:
-#    for sample in rsmpl:
-#      if sample.tag == "sample":
-#        LIMSID = sample.attrib['limsid']
-#        singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
-#            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
-#        svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-#        elem = svt.getroot()
-#        for element in elem:
-#          if element.tag == 'name':
-#            SAMPLEID = element.text
-#            COUNTER += 1
-#        print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
-#      else:
-#        if sample.tag == "next-page":
-#          URL = sample.attrib['uri']
-#          previous = URL
-#          smpls = requests.get(URL, auth=(user1, pass1))
-#          stree = ET.ElementTree(ET.fromstring(smpls.text))
-#          rsmpl = stree.getroot()
-#        if sample.tag == "previous-page":
-#          smpls = ""
-#          stree = ""
-#          rsmpl = []
-#          mybrain = 'delirious'
-#        print URL
-#        print sample.tag
-
-#for sample in rsmpl:
-#  print sample.tag, sample.attrib, sample.keys()
-#  print sample.tag
-#  print '  in limsid:', sample.attrib['limsid']
-#  LIMSID = sample.attrib['limsid']
-#  print '  in uri   :', sample.attrib['uri']
-#  singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
-#            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
-#  svt = ET.ElementTree(ET.fromstring(singlev.text))
-#  print singlev.text
-#  svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-#  elem = svt.getroot()
-#  print elem.attrib.get("name")
-
-#  for element in elem:
-#      if element.tag == 'name':
-#        SAMPLEID = element.text
-
-#        print element.tag, element.text
-#  print ET.iselement(elem), ET.iselement(stree), ET.iselement(rsmpl)
-#  name = ET.SubElement(elem, "name")
-#  print name.text
-#  print "LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID
-  
 exit
