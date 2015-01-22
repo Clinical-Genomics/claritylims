@@ -36,9 +36,9 @@ r = requests.get(baseurl, auth=(user1, pass1))
 tree = ElementTree.fromstring(r.text)
 
 for node in tree.iter('./sample'):
-  name = node.attrib.get('uri')
-  url = node.attrib.get('limsid')
-  if name and url:
+  uri = node.attrib.get('uri')
+  limsid = node.attrib.get('limsid')
+  if uri and limsid:
     print '  %s :: %s' % (limsid, uri)
   else:
     print 'None'
