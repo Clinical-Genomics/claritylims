@@ -34,7 +34,6 @@ r = requests.get(baseurl, auth=(user1, pass1))
 #print r.text
 
 tree = ElementTree.fromstring(r.text)
-root = tree.getroot()
 
 for node in tree.iter('sample'):
   name = node.attrib.get('uri')
