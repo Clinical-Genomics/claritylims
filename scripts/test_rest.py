@@ -45,7 +45,7 @@ for node in tree.findall('sample'):
     print 'None'
 
 
-for elem in r.text:
+for elem in tree:
   print elem.text
 #URL = baseurl+'samples/'
 #previous = URL
