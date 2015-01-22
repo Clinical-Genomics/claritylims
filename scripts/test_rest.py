@@ -43,7 +43,7 @@ for node in tree.findall('sample'):
     suburi = node.attrib['uri']
     print suburi
     rr = requests.get(suburi, auth=(user1, pass1))
-    subtree = ElementTree.fromstring(rr.text.text.encode('utf-8'))
+    subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
     name = subtree.findall('name')
     print name
 
