@@ -29,15 +29,17 @@ pass1 = params['apipass']
 r = requests.get(baseurl, auth=(user1, pass1))
 tree = ElementTree.fromstring(r.text)
 
+counter = 0
 for node in tree.findall('sample'):
   uri = node.attrib.get('uri')
   limsid = node.attrib.get('limsid')
   if node.tag == 'sample':
+    counter += 1
     internal_id = node.attrib['limsid']
     suburi = node.attrib['uri']
     rr = requests.get(suburi, auth=(user1, pass1))
     subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
     name = subtree.find('name')
-    print internal_id, name.text
+    print counter, internal_id, name.text
 
 exit
