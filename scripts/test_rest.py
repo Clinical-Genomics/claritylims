@@ -33,7 +33,7 @@ r = requests.get(baseurl, auth=(user1, pass1))
 #print r.encoding
 #print r.text
 
-tree = ElementTree.parse(r.text)
+tree = ElementTree.fromstring(r.text)
 root = tree.getroot()
 
 #for child in root:
