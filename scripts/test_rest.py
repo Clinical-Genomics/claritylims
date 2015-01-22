@@ -36,17 +36,16 @@ r = requests.get(baseurl, auth=(user1, pass1))
 tree = ElementTree.fromstring(r.text)
 
 for node in tree.findall('sample'):
-  print node.tag
   uri = node.attrib.get('uri')
   limsid = node.attrib.get('limsid')
   if uri and limsid:
-    print '  %s :: %s' % (limsid, uri)
+    print '  %s: %s' % (limsid, uri)
   else:
     print 'None'
 
 
-for elem in tree:
-  print elem.text
+#for elem in tree:
+#  print elem.text
 #URL = baseurl+'samples/'
 #previous = URL
 #smpls = requests.get(URL, auth=(user1, pass1))
