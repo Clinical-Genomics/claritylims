@@ -36,50 +36,48 @@ r = requests.get(baseurl, auth=(user1, pass1))
 tree = ElementTree.fromstring(r.text)
 root = tree.getroot()
 
-#for child in root:
-#  print child.tag, child.attrib
-  
-# get samples
+for node in tree.iter('sample'):
+  name = node.attrib.get('uri')
+  url = node.attrib.get('limsid')
+    if name and url:
+        print '  %s :: %s' % (limsid, uri)
+    else:
+        print 'None'
 
-LIMSID = ''
-SAMPLEID = ''
-COUNTER = 0
-
-URL = baseurl+'samples/'
-previous = URL
-smpls = requests.get(URL, auth=(user1, pass1))
-stree = ET.ElementTree(ET.fromstring(smpls.text))
-rsmpl = stree.getroot()
-mybrain = 'empty'
-while mybrain == 'empty':
-  if previous == URL:
-    for sample in rsmpl:
-      if sample.tag == "sample":
-        LIMSID = sample.attrib['limsid']
-        singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
-            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
-        svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
-        elem = svt.getroot()
-        for element in elem:
-          if element.tag == 'name':
-            SAMPLEID = element.text
-            COUNTER += 1
-        print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
-      else:
-        if sample.tag == "next-page":
-          URL = sample.attrib['uri']
-          previous = URL
-          smpls = requests.get(URL, auth=(user1, pass1))
-          stree = ET.ElementTree(ET.fromstring(smpls.text))
-          rsmpl = stree.getroot()
-        if sample.tag == "previous-page":
-          smpls = ""
-          stree = ""
-          rsmpl = []
-          mybrain = 'delirious'
-        print URL
-        print sample.tag
-
+#URL = baseurl+'samples/'
+#previous = URL
+#smpls = requests.get(URL, auth=(user1, pass1))
+#stree = ET.ElementTree(ET.fromstring(smpls.text))
+#rsmpl = stree.getroot()
+#mybrain = 'empty'
+#while mybrain == 'empty':
+#  if previous == URL:
+#    for sample in rsmpl:
+#      if sample.tag == "sample":
+#        LIMSID = sample.attrib['limsid']
+#        singlev = requests.get(sample.attrib['uri'], auth=(user1, pass1), 
+#            headers={'content-type': 'application/xml', 'accept': 'application/xml'})
+#        svt = ET.ElementTree(ET.fromstring(singlev.text.encode('utf-8')))
+#        elem = svt.getroot()
+#        for element in elem:
+#          if element.tag == 'name':
+#            SAMPLEID = element.text
+#            COUNTER += 1
+#        print str(COUNTER) + "     LIMSID " + LIMSID + "     SAMPLEID " + SAMPLEID 
+#      else:
+#        if sample.tag == "next-page":
+#          URL = sample.attrib['uri']
+#          previous = URL
+#          smpls = requests.get(URL, auth=(user1, pass1))
+#          stree = ET.ElementTree(ET.fromstring(smpls.text))
+#          rsmpl = stree.getroot()
+#        if sample.tag == "previous-page":
+#          smpls = ""
+#          stree = ""
+#          rsmpl = []
+#          mybrain = 'delirious'
+#        print URL
+#        print sample.tag
 
 #for sample in rsmpl:
 #  print sample.tag, sample.attrib, sample.keys()
