@@ -30,7 +30,7 @@ r = requests.get(baseurl, auth=(user1, pass1))
 tree = ElementTree.fromstring(r.text)
 
 counter = 0
-for node in tree.findall('sample'):
+for node in tree.findall():
   uri = node.attrib.get('uri')
   limsid = node.attrib.get('limsid')
   if node.tag == 'sample':
