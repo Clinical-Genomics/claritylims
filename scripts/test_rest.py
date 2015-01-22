@@ -38,7 +38,7 @@ tree = ElementTree.fromstring(r.text)
 for node in tree.findall('sample'):
   uri = node.attrib.get('uri')
   limsid = node.attrib.get('limsid')
-  if node.tag = 'sample'
+  if node.tag == 'sample'
     internal_id = node['limsid']
     print internal_id
 
