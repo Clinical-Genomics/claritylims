@@ -45,7 +45,7 @@ for node in tree.findall('sample'):
     rr = requests.get(suburi, auth=(user1, pass1))
     subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
     name = subtree.findall('name')
-    print name.text
+    print name[0]
 
 #for elem in tree:
 #  print elem.text
