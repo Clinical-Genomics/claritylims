@@ -44,6 +44,9 @@ for node in tree.findall('sample'):
   else:
     print 'None'
 
+
+for elem in r.text:
+  print elem.text
 #URL = baseurl+'samples/'
 #previous = URL
 #smpls = requests.get(URL, auth=(user1, pass1))
