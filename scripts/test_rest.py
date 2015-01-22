@@ -22,7 +22,6 @@ with open(configfile, "r") as confs:
       pv = line.split(" ")
       params[pv[0]] = pv[1]
 
-
 baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/samples/'
 user1 = params['apiuser']
 pass1 = params['apipass']
@@ -39,9 +38,9 @@ for node in tree.findall('sample'):
   uri = node.attrib.get('uri')
   limsid = node.attrib.get('limsid')
   if node.tag == 'sample':
-    internal_id = node['limsid']
+    internal_id = node.attrib['limsid']
     print internal_id
-
+    
 
 #for elem in tree:
 #  print elem.text
