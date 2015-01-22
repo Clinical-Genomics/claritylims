@@ -7,8 +7,7 @@ import glob
 import re
 import os
 import requests
-import elementtree.ElementTree as ET
-import cElementTree as ET
+from xml.etree import ElementTree
 
 configfile = "/home/hiseq.clinical/.scilifelabrc"
 if (len(sys.argv)>1):
@@ -34,7 +33,7 @@ r = requests.get(baseurl, auth=(user1, pass1))
 #print r.encoding
 #print r.text
 
-tree = ET.ElementTree(ET.fromstring(r.text))
+tree = ElementTree.parse(r.text)
 root = tree.getroot()
 
 #for child in root:
