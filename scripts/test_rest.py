@@ -40,7 +40,10 @@ for node in tree.findall('sample'):
   if node.tag == 'sample':
     internal_id = node.attrib['limsid']
     print internal_id
-    
+    uri = node.attrib['uri']
+    subtree = ElementTree.fromstring(uri)
+    name = subtree.findall('name')
+    print name[0]
 
 #for elem in tree:
 #  print elem.text
