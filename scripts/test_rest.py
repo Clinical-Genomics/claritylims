@@ -9,8 +9,8 @@ import os
 import requests
 from xml.etree import ElementTree
 
-configfile = "/home/hiseq.clinical/.scilifelabrc"
-print os.getenv('HOME')
+configfile = os.getenv('HOME') + '/.scilifelabrc'
+
 if (len(sys.argv)>1):
   if os.path.isfile(sys.argv[1]):
     configfile = sys.argv[1]
