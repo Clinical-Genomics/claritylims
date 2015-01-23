@@ -19,7 +19,6 @@ params = {}
 with open(configfile, "r") as confs:
   for line in confs:
     if len(line) > 5 and not line[0] == "#":
-#        line = line.
       pv = line.rstrip().split(" ")
       arg = pv[0]
       pv.pop(0)
