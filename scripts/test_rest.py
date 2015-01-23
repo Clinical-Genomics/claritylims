@@ -33,6 +33,7 @@ with open(configfile, "r") as confs:
 #      line = line.rstrip()
 #      pv = line.split(" ")
 #      params[pv[0]] = pv[1]
+print str(params)
 
 baseurl  = params['limsuri'] + 'api/v2/samples/'
 user1 = params['apiuser']
