@@ -25,7 +25,7 @@ with open(configfile, "r") as confs:
       print pv
 #      if len(pv) > 1:
 #        arg = pv[0]
-        pv.pop(0)
+      pv.pop(0)
       params[pv[0]] = ''.join(pv)
 #      else:
 #        params[pv[0]] = pv[1]
