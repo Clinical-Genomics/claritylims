@@ -20,7 +20,7 @@ with open(configfile, "r") as confs:
   for line in confs:
     if len(line) > 5 and not line[0] == "#":
       line = line.rstrip()
-      pv = line.split(" ")
+      pv = line.split()
 #      if len(pv) > 1:
 #        arg = pv[0]
 #        pv.pop(0)
