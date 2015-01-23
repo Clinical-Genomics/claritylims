@@ -22,7 +22,7 @@ with open(configfile, "r") as confs:
       pv = line.split(" ")
       params[pv[0]] = pv[1]
 
-baseurl  = 'https://clinical-lims-stage.scilifelab.se:8443/api/v2/samples/'
+baseurl  = params['limsuri'] + 'api/v2/samples/'
 user1 = params['apiuser']
 pass1 = params['apipass']
 
