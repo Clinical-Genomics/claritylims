@@ -19,22 +19,9 @@ params = {}
 with open(configfile, "r") as confs:
   for line in confs:
     if len(line) > 5 and not line[0] == "#":
-      line = line.rstrip()
-      print line
-      pv = line.split()
-      print pv
-#      if len(pv) > 1:
       arg = pv[0]
       pv.pop(0)
-      params[arg] = ''.join(pv)
-#      else:
-#        params[pv[0]] = pv[1]
-#with open(configfile, "r") as confs:
-#  for line in confs:
-#    if len(line) > 5 and not line[0] == "#":
-#      line = line.rstrip()
-#      pv = line.split(" ")
-#      params[pv[0]] = pv[1]
+      params[arg] = ' '.join(pv)
 print str(params)
 
 baseurl  = params['limsuri'] + 'api/v2/samples/'
