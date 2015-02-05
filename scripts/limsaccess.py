@@ -49,13 +49,15 @@ class limsconnect(object):
       print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
       
   def getroot(self):
-    check = True
-    while check:
-      r = requests.get(self.uri, auth=(self.user, self.pwd))
-      tree = ElementTree.fromstring(r.text)
-      for node in tree.iter():
-        print node.tag
-      chack = False
+#    check = True
+#    while check:
+    r = requests.get(self.uri, auth=(self.user, self.pwd))
+    tree = ElementTree.fromstring(r.text)
+    for node in tree.iter():
+      print node.tag
+      for key in node.attrib:
+        print node.attrib[key]
+#      check = False
 #        uri = node.attrib.get('uri')
 #        limsid = node.attrib.get('limsid')
 #        if node.tag == 'sample':
