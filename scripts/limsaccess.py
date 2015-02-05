@@ -34,29 +34,43 @@ def readconfig( config ):
         params[arg] = ' '.join(pv)
   return params
 
-baseurl  = params['limsuri'] + 'api/v2/samples/'
-user1 = params['apiuser']
-pass1 = params['apipass']
+def limsconnect(object):
+  
+  def __init__(self, User, Passwd, baseuri):
+    self.user = User
+    self.pwd = Passwd
+    self.uri = baseuri + 'api/v2/'
 
+  def __enter__(self):
+    return self
 
-counter = 0
-check = True
-while check:
-  r = requests.get(baseurl, auth=(user1, pass1))
-  tree = ElementTree.fromstring(r.text)
-  for node in tree.iter():
-    uri = node.attrib.get('uri')
-    limsid = node.attrib.get('limsid')
-    if node.tag == 'sample':
-      counter += 1
-      internal_id = node.attrib['limsid']
-      suburi = node.attrib['uri']
-      rr = requests.get(suburi, auth=(user1, pass1))
-      subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
-      name = subtree.find('name')
-      print counter, internal_id, name.text.encode('utf-8')
-    if node.tag == 'next-page':
-      baseurl = node.attrib.get('uri')
-    if node.tag == 'previous-page':
-      check = False
+  def __exit__(self, exc_type, exc_val, exc_tb):
+    if exc_type:
+      print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
+
+def somethingelse:
+  baseurl  = params['limsuri'] + 'api/v2/samples/'
+  user1 = params['apiuser']
+  pass1 = params['apipass']
+
+  counter = 0
+  check = True
+  while check:
+    r = requests.get(baseurl, auth=(user1, pass1))
+    tree = ElementTree.fromstring(r.text)
+    for node in tree.iter():
+      uri = node.attrib.get('uri')
+      limsid = node.attrib.get('limsid')
+      if node.tag == 'sample':
+        counter += 1
+        internal_id = node.attrib['limsid']
+        suburi = node.attrib['uri']
+        rr = requests.get(suburi, auth=(user1, pass1))
+        subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
+        name = subtree.find('name')
+        print counter, internal_id, name.text.encode('utf-8')
+      if node.tag == 'next-page':
+        baseurl = node.attrib.get('uri')
+      if node.tag == 'previous-page':
+        check = False
 
