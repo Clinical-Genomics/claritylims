@@ -25,7 +25,7 @@ with open(configfile, "r") as confs:
       params[arg] = ' '.join(pv)
 print str(params)
 
-baseurl  = params['limsuri'] + 'api/v2/samples/'
+baseurl  = params['baseuri'] + 'samples/'
 user1 = params['apiuser']
 pass1 = params['apipass']
 
