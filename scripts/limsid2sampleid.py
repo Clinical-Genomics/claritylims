@@ -17,5 +17,6 @@ pars = readconfig(configfile)
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
   entries = lmc.getroot()
+  print entries.tag
 #  for entry in entries:
 #    print entry 
