@@ -34,7 +34,7 @@ def readconfig( config ):
         params[arg] = ' '.join(pv)
   return params
 
-def limsconnect(object):
+class limsconnect(object):
   
   def __init__(self, User, Passwd, baseuri):
     self.user = User
