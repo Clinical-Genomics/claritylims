@@ -70,7 +70,7 @@ def limsconnect(object):
 #          check = False
 
 
-def somethingelse:
+def somethingelse(object):
   baseurl  = params['limsuri'] + 'api/v2/samples/'
   user1 = params['apiuser']
   pass1 = params['apipass']
