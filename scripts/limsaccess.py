@@ -48,7 +48,7 @@ def limsconnect(object):
     if exc_type:
       print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
       
-  def getroot:
+  def getroot(object):
     while check:
       r = requests.get(self.uri, auth=(self.user, self.pwd))
       tree = ElementTree.fromstring(r.text)
