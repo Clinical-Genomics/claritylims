@@ -40,6 +40,7 @@ class limsconnect(object):
     self.user = User
     self.pwd = Passwd
     self.uri = baseuri
+    self.entrypoints = { 'samples': 'limsid', 'artifacts': 'limsid' }
 
   def __enter__(self):
     return self
@@ -49,29 +50,13 @@ class limsconnect(object):
       print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
       
   def getroot(self):
-#    check = True
-#    while check:
+
     r = requests.get(self.uri, auth=(self.user, self.pwd))
     tree = ElementTree.fromstring(r.text)
     return tree.iter()
-#      print node.tag
-#      for key in node.attrib:
-#        print key, node.attrib[key]
-#      check = False
-#        uri = node.attrib.get('uri')
-#        limsid = node.attrib.get('limsid')
-#        if node.tag == 'sample':
-#          counter += 1
-#          internal_id = node.attrib['limsid']
-#          suburi = node.attrib['uri']
-#          rr = requests.get(suburi, auth=(user1, pass1))
-#          subtree = ElementTree.fromstring(rr.text.encode('utf-8'))
-#          name = subtree.find('name')
-#          print counter, internal_id, name.text.encode('utf-8')
-#        if node.tag == 'next-page':
-#          baseurl = node.attrib.get('uri')
-#        if node.tag == 'previous-page':
-#          check = False
+
+  def getentry(self, table, value):
+    
 
 
 def somethingelse(object):
