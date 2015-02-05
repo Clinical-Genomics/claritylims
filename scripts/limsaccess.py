@@ -53,10 +53,10 @@ class limsconnect(object):
 #    while check:
     r = requests.get(self.uri, auth=(self.user, self.pwd))
     tree = ElementTree.fromstring(r.text)
-    for node in tree.iter():
-      print node.tag
-      for key in node.attrib:
-        print key, node.attrib[key]
+    return tree.iter():
+#      print node.tag
+#      for key in node.attrib:
+#        print key, node.attrib[key]
 #      check = False
 #        uri = node.attrib.get('uri')
 #        limsid = node.attrib.get('limsid')
