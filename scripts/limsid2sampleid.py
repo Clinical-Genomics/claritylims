@@ -6,6 +6,7 @@ import time
 import glob
 import re
 import os
+import limsaccess
 
 if (len(sys.argv)>1):
   configfile = sys.argv[1]
