@@ -9,21 +9,30 @@ import os
 import requests
 from xml.etree import ElementTree
 
-configfile = os.getenv('HOME') + '/.scilifelabrc'
-
-if (len(sys.argv)>1):
-  if os.path.isfile(sys.argv[1]):
-    configfile = sys.argv[1]
-    
-params = {}
-with open(configfile, "r") as confs:
-  for line in confs:
-    if len(line) > 5 and not line[0] == "#":
-      pv = line.rstrip().split(" ")
-      arg = pv[0]
-      pv.pop(0)
-      params[arg] = ' '.join(pv)
-print str(params)
+def readconfig( config ):
+  """Reads parameters from a config file.
+  Args:
+    config (str): path to config file
+    If config does not exist the default will be used
+  Returns:
+    dict: parameters from the config file (unparsed)
+  """
+  if os.path.isfile(config):
+    configfile = config
+  else:
+    configfile = os.getenv('HOME') + '/.scilifelabrc'
+  if (len(sys.argv)>1):
+    if os.path.isfile(sys.argv[1]):
+      configfile = sys.argv[1]
+  params = {}
+  with open(configfile, "r") as confs:
+    for line in confs:
+      if len(line) > 3 and not line[0] == "#":
+        pv = line.rstrip().split(" ")
+        arg = pv[0]
+        pv.pop(0)
+        params[arg] = ' '.join(pv)
+  return params
 
 baseurl  = params['limsuri'] + 'api/v2/samples/'
 user1 = params['apiuser']
