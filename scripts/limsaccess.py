@@ -48,7 +48,7 @@ class limsconnect(object):
     if exc_type:
       print '__exit__(%s, %s, %s)' % (exc_type, exc_val, exc_tb)
       
-  def getroot(object):
+  def getroot(self):
     check = True
     while check:
       r = requests.get(self.uri, auth=(self.user, self.pwd))
