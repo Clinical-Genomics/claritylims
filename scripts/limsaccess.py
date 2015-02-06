@@ -59,7 +59,7 @@ class limsconnect(object):
     counter = 0
     r = requests.get(self.uri + searchattribute + '/' + searchvalue, auth=(user1, pass1))
     tree = ElementTree.fromstring(r.text)
-    return tree.iter():
+    return tree.iter()
 #        uri = node.attrib.get('uri')
 #          limsid = node.attrib.get('limsid')
 #          if node.tag == 'sample':
