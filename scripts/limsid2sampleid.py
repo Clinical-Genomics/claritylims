@@ -22,7 +22,7 @@ with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
     for key in node.attrib:
       print key, node.attrib[key]
       
-  hit = getentry('samples', 'SIB802A28')
+  hit = lmc.getentry('samples', 'SIB802A28')
   for node in hit:
     print node.tag
     for key in node.attrib:
