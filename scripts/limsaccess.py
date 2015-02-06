@@ -57,7 +57,7 @@ class limsconnect(object):
 
   def getentry(self, searchattribute, searchvalue):
     counter = 0
-    r = requests.get(self.uri + searchattribute + '/' + searchvalue, auth=(user1, pass1))
+    r = requests.get(self.uri + searchattribute + '/' + searchvalue, auth=(self.user, self.pwd))
     tree = ElementTree.fromstring(r.text)
     return tree.iter()
 #        uri = node.attrib.get('uri')
