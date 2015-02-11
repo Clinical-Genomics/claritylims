@@ -9,6 +9,7 @@ import os
 from limsaccess import *
 
 limsid = sys.argv[1]
+pars = readconfig()
 
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
