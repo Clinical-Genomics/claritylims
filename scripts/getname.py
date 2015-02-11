@@ -16,3 +16,5 @@ pars = readconfig(configfile)
 
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
+  hit = lmc.gettag('samples', 'SIB802A28', 'name')
+  print hit
