@@ -56,10 +56,22 @@ class limsconnect(object):
     return tree.iter()
 
   def getentry(self, searchattribute, searchvalue):
-    counter = 0
     r = requests.get(self.uri + searchattribute + '/' + searchvalue, auth=(self.user, self.pwd))
     tree = ElementTree.fromstring(r.text)
     return tree.iter()
+    
+  def gettag(self, searchattribute, searchvalue, tag):
+    r = requests.get(self.uri + searchattribute + '/' + searchvalue, auth=(self.user, self.pwd))
+    tree = ElementTree.fromstring(r.text)
+    hit = "No hit"
+    for node in tree:
+      if node.tag = tag:
+        hit = node.text
+    return hit
+
+    
+    
+  
 #        uri = node.attrib.get('uri')
 #          limsid = node.attrib.get('limsid')
 #          if node.tag == 'sample':
