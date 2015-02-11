@@ -9,21 +9,8 @@ import os
 import requests
 from xml.etree import ElementTree
 
-def readconfig( config ):
-  """Reads parameters from a config file.
-  Args:
-    config (str): path to config file
-    If config does not exist the default will be used
-  Returns:
-    dict: parameters from the config file (unparsed)
-  """
-  if os.path.isfile(config):
-    configfile = config
-  else:
-    configfile = os.getenv('HOME') + '/.scilifelabrc'
-  if (len(sys.argv)>1):
-    if os.path.isfile(sys.argv[1]):
-      configfile = sys.argv[1]
+def readconfig():
+  configfile = os.getenv('HOME') + '/.scilifelabrc'
   params = {}
   with open(configfile, "r") as confs:
     for line in confs:
