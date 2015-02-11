@@ -20,10 +20,10 @@ with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
   if os.path.isfile(limsid):
     with open(limsid) as f:
-    lines = f.readlines()
-    for line in lines:
-      hit = lmc.gettag('samples', line, 'name')
-      print line, hit
+      lines = f.readlines()
+      for line in lines:
+        hit = lmc.gettag('samples', line, 'name')
+        print line, hit
   else:
     lmc.gettag('samples', limsid, 'name')
     print hit
