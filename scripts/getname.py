@@ -8,13 +8,15 @@ import re
 import os
 from limsaccess import *
 
-if (len(sys.argv)>1):
-  configfile = sys.argv[1]
+limsid = sys.argv[1]
+
+if (len(sys.argv)>2):
+  configfile = sys.argv[2]
 else:
   configfile = 'None'
 pars = readconfig(configfile)
 
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
-  hit = lmc.gettag('samples', 'SIB802A28', 'name')
+  hit = lmc.gettag('samples', limsid, 'name')
   print hit
