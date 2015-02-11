@@ -65,7 +65,7 @@ class limsconnect(object):
     tree = ElementTree.fromstring(r.text)
     hit = "No hit"
     for node in tree:
-      if node.tag = tag:
+      if node.tag == tag:
         hit = node.text
     return hit
 
