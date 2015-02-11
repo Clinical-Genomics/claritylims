@@ -10,12 +10,6 @@ from limsaccess import *
 
 limsid = sys.argv[1]
 
-if (len(sys.argv)>2):
-  configfile = sys.argv[2]
-else:
-  configfile = 'None'
-pars = readconfig(configfile)
-
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
   if os.path.isfile(limsid):
