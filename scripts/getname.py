@@ -18,5 +18,12 @@ pars = readconfig(configfile)
 
 with limsconnect(pars['apiuser'], pars['apipass'], pars['baseuri']) as lmc:
   
-  hit = lmc.gettag('samples', limsid, 'name')
-  print hit
+  if os.path.isfile(limsid):
+    with open(limsid) as f:
+    lines = f.readlines()
+    for line in lines:
+      hit = lmc.gettag('samples', line, 'name')
+      print line, hit
+  else:
+    lmc.gettag('samples', limsid, 'name')
+    print hit
