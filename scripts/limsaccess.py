@@ -56,10 +56,9 @@ class limsconnect(object):
         hit = node.text
     return hit
 
-    
-    
-  
-#        uri = node.attrib.get('uri')
+  def getlist(self, term):
+    r = requests.get(self.uri + , auth=(self.user, self.pwd))
+    uri = node.attrib.get('uri')
 #          limsid = node.attrib.get('limsid')
 #          if node.tag == 'sample':
 #            counter += 1
